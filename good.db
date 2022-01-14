@@ -1,0 +1,554 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.4
+-- Dumped by pg_dump version 13.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: adminmsg_prmk_seq; Type: SEQUENCE; Schema: public; Owner: ak08415
+--
+
+CREATE SEQUENCE public.adminmsg_prmk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.adminmsg_prmk_seq OWNER TO ak08415;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: adminmsg; Type: TABLE; Schema: public; Owner: ak08415
+--
+
+CREATE TABLE public.adminmsg (
+    prmk integer DEFAULT nextval('public.adminmsg_prmk_seq'::regclass),
+    sdate date,
+    id character varying(50),
+    content text,
+    fprmk integer
+);
+
+
+ALTER TABLE public.adminmsg OWNER TO ak08415;
+
+--
+-- Name: apply; Type: TABLE; Schema: public; Owner: ak08415
+--
+
+CREATE TABLE public.apply (
+    prmk bigint NOT NULL,
+    pname character varying(50) NOT NULL,
+    company character varying(50),
+    spec character varying(50),
+    num bigint,
+    cname character varying(50),
+    pdate date,
+    id character varying(30),
+    agreeid character varying(30),
+    agreename character varying,
+    ptime timestamp without time zone,
+    approve character varying(20),
+    note text
+);
+
+
+ALTER TABLE public.apply OWNER TO ak08415;
+
+--
+-- Name: apply_prmk_seq; Type: SEQUENCE; Schema: public; Owner: ak08415
+--
+
+CREATE SEQUENCE public.apply_prmk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.apply_prmk_seq OWNER TO ak08415;
+
+--
+-- Name: apply_prmk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ak08415
+--
+
+ALTER SEQUENCE public.apply_prmk_seq OWNED BY public.apply.prmk;
+
+
+--
+-- Name: member; Type: TABLE; Schema: public; Owner: ak08415
+--
+
+CREATE TABLE public.member (
+    prmk bigint NOT NULL,
+    id character varying(30),
+    cname character varying(50),
+    ename character varying(50),
+    department character varying(30),
+    passwd character varying(50),
+    note text,
+    email character varying(100),
+    power integer
+);
+
+
+ALTER TABLE public.member OWNER TO ak08415;
+
+--
+-- Name: member_prmk_seq; Type: SEQUENCE; Schema: public; Owner: ak08415
+--
+
+CREATE SEQUENCE public.member_prmk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.member_prmk_seq OWNER TO ak08415;
+
+--
+-- Name: member_prmk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ak08415
+--
+
+ALTER SEQUENCE public.member_prmk_seq OWNED BY public.member.prmk;
+
+
+--
+-- Name: msg_prmk_seq; Type: SEQUENCE; Schema: public; Owner: ak08415
+--
+
+CREATE SEQUENCE public.msg_prmk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.msg_prmk_seq OWNER TO ak08415;
+
+--
+-- Name: msg; Type: TABLE; Schema: public; Owner: ak08415
+--
+
+CREATE TABLE public.msg (
+    prmk integer DEFAULT nextval('public.msg_prmk_seq'::regclass),
+    sdate date,
+    id character varying(50),
+    content text,
+    fprmk integer,
+    vote character varying(10)
+);
+
+
+ALTER TABLE public.msg OWNER TO ak08415;
+
+--
+-- Name: product; Type: TABLE; Schema: public; Owner: ak08415
+--
+
+CREATE TABLE public.product (
+    prmk bigint NOT NULL,
+    pname character varying(100) NOT NULL,
+    company character varying(30),
+    spec character varying(30),
+    cost bigint,
+    num bigint,
+    note text,
+    roomid character varying(20),
+    location character varying(50),
+    pdate date
+);
+
+
+ALTER TABLE public.product OWNER TO ak08415;
+
+--
+-- Name: product_prmk_seq; Type: SEQUENCE; Schema: public; Owner: ak08415
+--
+
+CREATE SEQUENCE public.product_prmk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.product_prmk_seq OWNER TO ak08415;
+
+--
+-- Name: product_prmk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ak08415
+--
+
+ALTER SEQUENCE public.product_prmk_seq OWNED BY public.product.prmk;
+
+
+--
+-- Name: savenum; Type: TABLE; Schema: public; Owner: ak08415
+--
+
+CREATE TABLE public.savenum (
+    prmk bigint NOT NULL,
+    pname character varying(50),
+    company character varying(50),
+    spec character varying(50),
+    num bigint
+);
+
+
+ALTER TABLE public.savenum OWNER TO ak08415;
+
+--
+-- Name: savenum_prmk_seq; Type: SEQUENCE; Schema: public; Owner: ak08415
+--
+
+CREATE SEQUENCE public.savenum_prmk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.savenum_prmk_seq OWNER TO ak08415;
+
+--
+-- Name: savenum_prmk_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ak08415
+--
+
+ALTER SEQUENCE public.savenum_prmk_seq OWNED BY public.savenum.prmk;
+
+
+--
+-- Name: vote_prmk_seq; Type: SEQUENCE; Schema: public; Owner: ak08415
+--
+
+CREATE SEQUENCE public.vote_prmk_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.vote_prmk_seq OWNER TO ak08415;
+
+--
+-- Name: vote; Type: TABLE; Schema: public; Owner: ak08415
+--
+
+CREATE TABLE public.vote (
+    prmk integer DEFAULT nextval('public.vote_prmk_seq'::regclass),
+    title character varying(50),
+    content text,
+    bdate date,
+    sdate date,
+    applyid character varying(50),
+    ptime time without time zone,
+    rate double precision,
+    num integer
+);
+
+
+ALTER TABLE public.vote OWNER TO ak08415;
+
+--
+-- Name: apply prmk; Type: DEFAULT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.apply ALTER COLUMN prmk SET DEFAULT nextval('public.apply_prmk_seq'::regclass);
+
+
+--
+-- Name: member prmk; Type: DEFAULT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.member ALTER COLUMN prmk SET DEFAULT nextval('public.member_prmk_seq'::regclass);
+
+
+--
+-- Name: product prmk; Type: DEFAULT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.product ALTER COLUMN prmk SET DEFAULT nextval('public.product_prmk_seq'::regclass);
+
+
+--
+-- Name: savenum prmk; Type: DEFAULT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.savenum ALTER COLUMN prmk SET DEFAULT nextval('public.savenum_prmk_seq'::regclass);
+
+
+--
+-- Data for Name: adminmsg; Type: TABLE DATA; Schema: public; Owner: ak08415
+--
+
+COPY public.adminmsg (prmk, sdate, id, content, fprmk) FROM stdin;
+1	2022-01-13	mavis	贊成	\N
+2	2022-01-13	mavis	自由投票	\N
+3	2022-01-13	peterson	讚！	\N
+4	2022-01-13		Srtghjgg	\N
+5	2022-01-13	mavis	一＇挱	\N
+6	2022-01-13	mavis	Swafrenthm	\N
+7	2022-01-13	mavis		\N
+8	2022-01-13	mag	123156487897854654	\N
+9	2022-01-13	kimjuck	heyhey	\N
+10	2022-01-13	Aa	12315654687681768716817654	\N
+11	2022-01-13	Aa		\N
+\.
+
+
+--
+-- Data for Name: apply; Type: TABLE DATA; Schema: public; Owner: ak08415
+--
+
+COPY public.apply (prmk, pname, company, spec, num, cname, pdate, id, agreeid, agreename, ptime, approve, note) FROM stdin;
+7	紅色碳粉匣	HP	M855	3	林世旻	2021-02-13	peterson	peterson	林世旻	2021-02-13 02:59:01.23107	yes	\N
+8	黑色碳粉匣	HP	M855	3	林世旻	2021-02-13	peterson	peterson	林世旻	2021-02-13 19:30:27.787843	yes	\N
+9	紅色碳粉匣	HP	M855	1	林世旻	2021-02-14	peterson	peterson	林世旻	2021-02-13 22:55:25.775733	yes	
+10	黑色碳粉匣	HP	M855	3	林世旻	2021-02-14	peterson	peterson	林世旻	2021-02-13 22:55:29.311948	yes	
+\.
+
+
+--
+-- Data for Name: member; Type: TABLE DATA; Schema: public; Owner: ak08415
+--
+
+COPY public.member (prmk, id, cname, ename, department, passwd, note, email, power) FROM stdin;
+1	peterson	林世旻	peterson	zxczcz	peterson		win34567@yahoo.com.tw	\N
+2	darren	林大中	darren	zxczcz	darren		tom20010729@yahoo.com.tw	\N
+3	mag	莊晏欣	\N	\N	mag	\N	mag@gmail.com	\N
+8	kimjuck	金	\N	\N	123456	\N	jaeuck@gmail.com	\N
+9	Aa	aa	\N	\N	123456	\N	aa@gmail.com	\N
+4	admin	林云媐	\N	\N	123456	\N	admin@gmail.com	1
+\.
+
+
+--
+-- Data for Name: msg; Type: TABLE DATA; Schema: public; Owner: ak08415
+--
+
+COPY public.msg (prmk, sdate, id, content, fprmk, vote) FROM stdin;
+1	2022-01-11	peterson	贊成	2	贊成
+3	2022-01-11	mavis	贊成，真的太多了!	2	贊成
+4	2022-01-11	mavis	太好了	1	贊成
+6	2022-01-11	peterson	雙手贊成!	3	贊成
+7	2022-01-11	mavis	我雙手雙腳贊成	3	贊成
+8	2022-01-11	mavis	功課太多，無創意空間及時間	2	贊成
+9	2022-01-11	mavis	功課太難	2	贊成
+2	2022-01-11	peterson	不贊成，功課會退步	2	不贊成
+5	2022-01-11	peterson	這樣好嗎?	1	不贊成
+10	2022-01-12	mavis	dge	2	不贊成
+11	2022-01-12	mavis	12312312	3	不贊成
+13	2022-01-13	mavis	一定要減的啦！	2	贊成
+14	2022-01-13	peterson	可以睡晚一點	2	贊成
+15	2022-01-13	mavis		1	贊成
+21	2022-01-13	mavis		1	贊成
+22	2022-01-13	mavis		1	不贊成
+23	2022-01-13	kimjuck	dsvgasrgra	10	不贊成
+24	2022-01-13	kimjuck	rfrf	12	贊成
+25	2022-01-13	mag	good	2	贊成
+26	2022-01-13	mag	33	13	贊成
+27	2022-01-13	admin	;;	15	贊成
+28	2022-01-13	Aa	ytw4ty45	17	贊成
+\.
+
+
+--
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: ak08415
+--
+
+COPY public.product (prmk, pname, company, spec, cost, num, note, roomid, location, pdate) FROM stdin;
+2	紅色碳粉匣	HP	M855	7000	5	\N	\N	343號房,第6櫃	2021-02-09
+5	感光鼓	HP	黑色	\N	10	\N	\N	343號房,第8櫃	2021-02-09
+6	感光鼓	HP	紅色	\N	10	\N	\N	343號房,第8櫃	2021-02-09
+1	黑色碳粉匣	HP	M855	7000	15	\N	\N	343號房,第5櫃	2021-02-09
+\.
+
+
+--
+-- Data for Name: savenum; Type: TABLE DATA; Schema: public; Owner: ak08415
+--
+
+COPY public.savenum (prmk, pname, company, spec, num) FROM stdin;
+1	感光鼓	HP	紅色	11
+2	黑色碳粉匣	HP	M855	4
+\.
+
+
+--
+-- Data for Name: vote; Type: TABLE DATA; Schema: public; Owner: ak08415
+--
+
+COPY public.vote (prmk, title, content, bdate, sdate, applyid, ptime, rate, num) FROM stdin;
+1	大學不用上通識	通識浪費時間	2022-01-10	2022-01-28	mavis	20:51:30.694985	\N	\N
+2	功課減量	功課太多，無創意空間及時間	2022-01-11	2022-01-26	mavis	04:49:08.879487	\N	\N
+3	防疫情贊成遠距教學	防堵疫情，希望遠距教學	2022-01-25	2022-01-31	peterson	05:05:28.479428	\N	\N
+8	系統測試	測試系統	2022-01-26	2022-01-31	peterson	08:58:37.810597	\N	\N
+10	zdhs trujhrt	thjsrui yulktui;ll ke	2022-01-11	2022-01-28	kimjuck	20:38:00.787311	\N	\N
+12	456	456	2022-01-11	2022-01-21	kimjuck	21:08:34.761587	\N	\N
+13	11223	2	\N	2022-01-28	mag	21:31:58.848119	\N	\N
+14	tryy1	dfege11	\N	2022-01-29	mag	21:32:27.240015	\N	\N
+15	tryy2	22222	\N	2022-01-28	admin	21:33:56.478934	\N	\N
+16	eewwe12	dfege4e3r	\N	2022-02-04	kimjuck	21:47:05.378924	\N	\N
+17	44411	12315654687681768716817654	\N	2022-01-20	Aa	23:16:06.42384	\N	\N
+\.
+
+
+--
+-- Name: adminmsg_prmk_seq; Type: SEQUENCE SET; Schema: public; Owner: ak08415
+--
+
+SELECT pg_catalog.setval('public.adminmsg_prmk_seq', 11, true);
+
+
+--
+-- Name: apply_prmk_seq; Type: SEQUENCE SET; Schema: public; Owner: ak08415
+--
+
+SELECT pg_catalog.setval('public.apply_prmk_seq', 10, true);
+
+
+--
+-- Name: member_prmk_seq; Type: SEQUENCE SET; Schema: public; Owner: ak08415
+--
+
+SELECT pg_catalog.setval('public.member_prmk_seq', 11, true);
+
+
+--
+-- Name: msg_prmk_seq; Type: SEQUENCE SET; Schema: public; Owner: ak08415
+--
+
+SELECT pg_catalog.setval('public.msg_prmk_seq', 28, true);
+
+
+--
+-- Name: product_prmk_seq; Type: SEQUENCE SET; Schema: public; Owner: ak08415
+--
+
+SELECT pg_catalog.setval('public.product_prmk_seq', 6, true);
+
+
+--
+-- Name: savenum_prmk_seq; Type: SEQUENCE SET; Schema: public; Owner: ak08415
+--
+
+SELECT pg_catalog.setval('public.savenum_prmk_seq', 2, true);
+
+
+--
+-- Name: vote_prmk_seq; Type: SEQUENCE SET; Schema: public; Owner: ak08415
+--
+
+SELECT pg_catalog.setval('public.vote_prmk_seq', 17, true);
+
+
+--
+-- Name: apply apply_pkey; Type: CONSTRAINT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.apply
+    ADD CONSTRAINT apply_pkey PRIMARY KEY (prmk);
+
+
+--
+-- Name: member member_pkey; Type: CONSTRAINT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.member
+    ADD CONSTRAINT member_pkey PRIMARY KEY (prmk);
+
+
+--
+-- Name: product product_pkey; Type: CONSTRAINT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.product
+    ADD CONSTRAINT product_pkey PRIMARY KEY (prmk);
+
+
+--
+-- Name: savenum savenum_pkey; Type: CONSTRAINT; Schema: public; Owner: ak08415
+--
+
+ALTER TABLE ONLY public.savenum
+    ADD CONSTRAINT savenum_pkey PRIMARY KEY (prmk);
+
+
+--
+-- Name: index_apply; Type: INDEX; Schema: public; Owner: ak08415
+--
+
+CREATE INDEX index_apply ON public.apply USING btree (pname, company, spec);
+
+
+--
+-- Name: index_product; Type: INDEX; Schema: public; Owner: ak08415
+--
+
+CREATE INDEX index_product ON public.product USING btree (pname, company, spec);
+
+
+--
+-- Name: index_savenum; Type: INDEX; Schema: public; Owner: ak08415
+--
+
+CREATE INDEX index_savenum ON public.savenum USING btree (pname, company, spec);
+
+
+--
+-- Name: TABLE member; Type: ACL; Schema: public; Owner: ak08415
+--
+
+REVOKE ALL ON TABLE public.member FROM ak08415;
+GRANT ALL ON TABLE public.member TO ak08415 WITH GRANT OPTION;
+GRANT ALL ON TABLE public.member TO postgres WITH GRANT OPTION;
+GRANT ALL ON TABLE public.member TO mavis;
+GRANT ALL ON TABLE public.member TO darren;
+
+
+--
+-- Name: SEQUENCE member_prmk_seq; Type: ACL; Schema: public; Owner: ak08415
+--
+
+REVOKE ALL ON SEQUENCE public.member_prmk_seq FROM ak08415;
+GRANT ALL ON SEQUENCE public.member_prmk_seq TO ak08415 WITH GRANT OPTION;
+GRANT ALL ON SEQUENCE public.member_prmk_seq TO postgres WITH GRANT OPTION;
+GRANT SELECT ON SEQUENCE public.member_prmk_seq TO mavis;
+
+
+--
+-- Name: TABLE vote; Type: ACL; Schema: public; Owner: ak08415
+--
+
+GRANT ALL ON TABLE public.vote TO mavis;
+GRANT ALL ON TABLE public.vote TO darren;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

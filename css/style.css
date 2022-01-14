@@ -1,0 +1,122 @@
+*{
+    font-family: 'Raleway', sans-serif;
+    background-color: #cdcbc6;
+}
+
+.fixed-top, .navbar-brand, .navbar-collapse, .nav-link, .navbar-expand-md, .aabc, .dropdown-toggle{
+    background-color: #1c4726;
+    /* font-size: xx-large; */
+}
+
+.navbar-brand{
+    font-size: xxx-large;
+}
+
+body, head, main{
+    background-color: #cdcbc6;
+}
+
+.nav-link{
+    font-size: larger;
+}
+
+.nav-link:hover{
+    font-size: larger;
+    transform: scale(1.2, 1.2);
+    color: #ffffff;
+    font-weight: bold;
+}
+tr{
+    font-size: larger;
+}
+
+.xin{
+    font-size: larger;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.conbo{
+    border: #1c4726 2px solid;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.container{
+    /* border: #1c4726 2px solid;
+    border-radius: 10px; */
+    padding: 40px;
+}
+
+.w-100{
+    background-color: #1c4726;
+    color: #cdcbc6;
+    transform:scale(1,1);
+    transition: all 0.2s ease-out;
+    
+    
+}
+
+.w-100:hover{
+    background-color: #419755;
+    transform: scale(1.01, 1.01);
+}
+
+.nott{
+    display: inline-block;
+}
+
+.fas{
+    font-size: xxx-large;
+    color: #1c4726;
+}
+
+a, .conp{
+    color: #1c4726;
+}
+
+.pointmyvote:hover, .pointihavevoted:hover{
+    color: #419755;
+}
+
+.chan{
+    margin-top: 30px;
+}
+
+.heh{
+    margin: auto;
+    margin-left: 750px;
+}
+
+td:hover{
+    background-color: rgba(255,255,255,0.2);
+}
+
+.yu{
+    color: #1c4726;
+}
+
+.yu:hover{
+    background-color: rgba(255,255,255,0.2);
+    color: #419755;
+}
+
+.delout{
+    font-size: xxx-large;
+}
+
+.container_1{
+    padding-left: 40px;
+    margin-left: 100px;
+}
+
+.twobtn{
+    color: #1c4726;
+    font-size: larger;
+    /* transform:scale(1,1);
+    transition: all 0.5s ease-out; */
+}
+.twobtn:hover{
+    color: #419755;
+    /* transform: scale(1.2, 1.2); */
+}
